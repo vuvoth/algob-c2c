@@ -1,0 +1,311 @@
+filename: c2c-call.py
+timestamp: 1646296193
+compiled: BiACAQAmAQtlY2hvX21ldGhvZDEYIxJAAFwxGYEFEkAATjEZgQQSQABAMRmBAhJAADYxGSISQAAtNhoAgAtjYWxsX21ldGhvZBJAABE2GgAoEkAAAQCIADqIAF0iQ4gAF4gAVSJDIkMiQzEAMgkSQzEAMgkSQyJDsYEGshA2GgEXwDKyGCiyGiOyAbO1OgBXBgCJgBZDYWxsIGZyb20gYXBwbGljYXRpdG9uiTUBNAEVFlcGAjQBUIk1AIAEFR98dTQAiP/mULCJ
+compiledHash: GSEL54YYISQDKFOCNGIPMJAWRQ4IMHNFZWLYU2BLUNNTE3HNQY7Q7C4ISE
+srcHash: 346586925
+base64ToBytes:
+  - 6
+  - 32
+  - 2
+  - 1
+  - 0
+  - 38
+  - 1
+  - 11
+  - 101
+  - 99
+  - 104
+  - 111
+  - 95
+  - 109
+  - 101
+  - 116
+  - 104
+  - 111
+  - 100
+  - 49
+  - 24
+  - 35
+  - 18
+  - 64
+  - 0
+  - 92
+  - 49
+  - 25
+  - 129
+  - 5
+  - 18
+  - 64
+  - 0
+  - 78
+  - 49
+  - 25
+  - 129
+  - 4
+  - 18
+  - 64
+  - 0
+  - 64
+  - 49
+  - 25
+  - 129
+  - 2
+  - 18
+  - 64
+  - 0
+  - 54
+  - 49
+  - 25
+  - 34
+  - 18
+  - 64
+  - 0
+  - 45
+  - 54
+  - 26
+  - 0
+  - 128
+  - 11
+  - 99
+  - 97
+  - 108
+  - 108
+  - 95
+  - 109
+  - 101
+  - 116
+  - 104
+  - 111
+  - 100
+  - 18
+  - 64
+  - 0
+  - 17
+  - 54
+  - 26
+  - 0
+  - 40
+  - 18
+  - 64
+  - 0
+  - 1
+  - 0
+  - 136
+  - 0
+  - 58
+  - 136
+  - 0
+  - 93
+  - 34
+  - 67
+  - 136
+  - 0
+  - 23
+  - 136
+  - 0
+  - 85
+  - 34
+  - 67
+  - 34
+  - 67
+  - 34
+  - 67
+  - 49
+  - 0
+  - 50
+  - 9
+  - 18
+  - 67
+  - 49
+  - 0
+  - 50
+  - 9
+  - 18
+  - 67
+  - 34
+  - 67
+  - 177
+  - 129
+  - 6
+  - 178
+  - 16
+  - 54
+  - 26
+  - 1
+  - 23
+  - 192
+  - 50
+  - 178
+  - 24
+  - 40
+  - 178
+  - 26
+  - 35
+  - 178
+  - 1
+  - 179
+  - 181
+  - 58
+  - 0
+  - 87
+  - 6
+  - 0
+  - 137
+  - 128
+  - 22
+  - 67
+  - 97
+  - 108
+  - 108
+  - 32
+  - 102
+  - 114
+  - 111
+  - 109
+  - 32
+  - 97
+  - 112
+  - 112
+  - 108
+  - 105
+  - 99
+  - 97
+  - 116
+  - 105
+  - 116
+  - 111
+  - 110
+  - 137
+  - 53
+  - 1
+  - 52
+  - 1
+  - 21
+  - 22
+  - 87
+  - 6
+  - 2
+  - 52
+  - 1
+  - 80
+  - 137
+  - 53
+  - 0
+  - 128
+  - 4
+  - 21
+  - 31
+  - 124
+  - 117
+  - 52
+  - 0
+  - 136
+  - 255
+  - 230
+  - 80
+  - 176
+  - 137
+tealCode: |
+  #pragma version 6
+  txn ApplicationID
+  int 0
+  ==
+  bnz main_l14
+  txn OnCompletion
+  int DeleteApplication
+  ==
+  bnz main_l13
+  txn OnCompletion
+  int UpdateApplication
+  ==
+  bnz main_l12
+  txn OnCompletion
+  int CloseOut
+  ==
+  bnz main_l11
+  txn OnCompletion
+  int OptIn
+  ==
+  bnz main_l10
+  txna ApplicationArgs 0
+  byte "call_method"
+  ==
+  bnz main_l9
+  txna ApplicationArgs 0
+  byte "echo_method"
+  ==
+  bnz main_l8
+  err
+  main_l8:
+  callsub echo_1
+  callsub retlog_3
+  int 1
+  return
+  main_l9:
+  callsub call_0
+  callsub retlog_3
+  int 1
+  return
+  main_l10:
+  int 1
+  return
+  main_l11:
+  int 1
+  return
+  main_l12:
+  txn Sender
+  global CreatorAddress
+  ==
+  return
+  main_l13:
+  txn Sender
+  global CreatorAddress
+  ==
+  return
+  main_l14:
+  int 1
+  return
+
+  // call
+  call_0:
+  itxn_begin
+  int appl
+  itxn_field TypeEnum
+  txna ApplicationArgs 1
+  btoi
+  txnas Applications
+  itxn_field ApplicationID
+  byte "echo_method"
+  itxn_field ApplicationArgs
+  int 0
+  itxn_field Fee
+  itxn_submit
+  itxna Logs 0
+  extract 6 0
+  retsub
+
+  // echo
+  echo_1:
+  byte "Call from applicatiton"
+  retsub
+
+  // string_encode
+  stringencode_2:
+  store 1
+  load 1
+  len
+  itob
+  extract 6 2
+  load 1
+  concat
+  retsub
+
+  // ret_log
+  retlog_3:
+  store 0
+  byte 0x151f7c75
+  load 0
+  callsub stringencode_2
+  concat
+  log
+  retsub

@@ -1,0 +1,24 @@
+default:
+    timestamp: 1646296193608
+    metadata: {}
+    asa: {}
+    ssc:
+        c2c-call.py-clear.teal:
+            1646296194:
+                creator: ROLYXNGNMOXE66UBYVCKLQ2NOZLIIIN4EDT3OW3ZZHA6FWX6HFQN2PB6SI
+                txId: 4HIV2UN4RDSTDP2BO7MCUGPFWTVRCETXGFBTVVLH2YFCS5LPWKRQ
+                confirmedRound: 33
+                appID: 41
+                applicationAccount: KLWQTWPJXUAPVZNANKGGTTFGPPJZDOLGOCBCBRHR53C6J2FDYF2GBABCRU
+                timestamp: 1646296194
+                deleted: false
+        c2c-echo.py-clear.teal:
+            1646296194:
+                creator: ROLYXNGNMOXE66UBYVCKLQ2NOZLIIIN4EDT3OW3ZZHA6FWX6HFQN2PB6SI
+                txId: 7PDSC7PPEHTEHCN3UL35IC3N33KMYAE4YFBY3HGXRI73CPZ7Z27A
+                confirmedRound: 34
+                appID: 42
+                applicationAccount: MW6NSXPOT4R6EQCK4VRNZOJSAKSPQ5TXYZQBCJXXYBK4ET4E7R74GVWL2Q
+                timestamp: 1646296194
+                deleted: false
+    dLsig: {}
